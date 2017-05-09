@@ -7,3 +7,4 @@ Requirements:
 - FastNetMon by Pavel Odintsov - https://github.com/pavel-odintsov/fastnetmon configuted with InfluxDB (https://github.com/FastVPSEestiOu/fastnetmon/blob/master/docs/INFLUXDB_INTEGRATION.md)
 - Grafana (https://github.com/grafana/grafana)
 
+![alt text](https://github.com/openbsod/grafana_dashboards/blob/master/images/main.png)
