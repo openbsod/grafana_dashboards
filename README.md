@@ -30,3 +30,9 @@ https://grafana.com/dashboards/2228
 https://grafana.com/dashboards/2234
 
 ![alt text](https://github.com/openbsod/grafana_dashboards/blob/master/images/top-outgoing-hosts-fnm-community.png)
+
+###### Traffic for single specified /32 host Dashboard
+
+https://grafana.com/dashboards/2237
+
+![alt text](https://github.com/openbsod/grafana_dashboards/blob/master/images/traffic_for_host.png)
