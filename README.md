@@ -36,3 +36,9 @@ https://grafana.com/dashboards/2234
 https://grafana.com/dashboards/2237
 
 ![alt text](https://github.com/openbsod/grafana_dashboards/blob/master/images/traffic_for_host.png)
+
+###### Traffic for single specified network Dashboard
+
+https://grafana.com/dashboards/2243
+
+![alt text](https://github.com/openbsod/grafana_dashboards/blob/master/images/traffic_for_network.png)
