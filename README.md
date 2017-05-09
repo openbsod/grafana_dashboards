@@ -4,7 +4,7 @@ InfluxDB receives traffic reports from FastNetMon collectors and Grafana plots n
 
 Requirements:
 
-- FastNetMon by Pavel Odintsov - https://github.com/pavel-odintsov/fastnetmon configuted with InfluxDB (https://github.com/FastVPSEestiOu/fastnetmon/blob/master/docs/INFLUXDB_INTEGRATION.md)
+- FastNetMon by Pavel Odintsov - https://github.com/pavel-odintsov/fastnetmon configured with InfluxDB (https://github.com/FastVPSEestiOu/fastnetmon/blob/master/docs/INFLUXDB_INTEGRATION.md)
 - Grafana (https://github.com/grafana/grafana)
 
 ###### Main Dashboard
