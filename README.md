@@ -42,3 +42,9 @@ https://grafana.com/dashboards/2237
 https://grafana.com/dashboards/2243
 
 ![alt text](https://github.com/openbsod/grafana_dashboards/blob/master/images/traffic_for_network.png)
+
+###### Direct stream sFlow\Netflow data to InfluxDB 
+
+After all you may want collect your entyre sFlow/Netflow data directly to InfluxDB
+
+![alt text](https://github.com/openbsod/grafana_dashboards/blob/master/images/influx.png)
