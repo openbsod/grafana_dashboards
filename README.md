@@ -18,3 +18,9 @@ https://grafana.com/dashboards/2216
 https://grafana.com/dashboards/2225
 
 ![alt text](https://github.com/openbsod/grafana_dashboards/blob/master/images/top_hosts.png)
+
+###### Top networks Dashboard
+
+https://grafana.com/dashboards/2228
+
+![alt text](https://github.com/openbsod/grafana_dashboards/blob/master/images/top-networks.png)
