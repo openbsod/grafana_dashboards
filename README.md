@@ -13,6 +13,12 @@ https://grafana.com/dashboards/2216
 
 ![alt text](https://github.com/openbsod/grafana_dashboards/blob/master/images/main.png)
 
+###### Main Dashboard Fastnetmon Advanced ClickHouse
+
+https://grafana.com/dashboards/3413
+
+![alt text](https://github.com/openbsod/grafana_dashboards/blob/master/images/fnm-adv-ch.png)
+
 ###### Top hosts Dashboard
 
 https://grafana.com/dashboards/2225
@@ -48,3 +54,13 @@ https://grafana.com/dashboards/2243
 After all you may want collect your entyre sFlow/Netflow data directly to InfluxDB
 
 ![alt text](https://github.com/openbsod/grafana_dashboards/blob/master/images/influx.png)
+
+
+
+
+
+
+
+
+
+
