@@ -1,0 +1,336 @@
+{
+  "__inputs": [
+    {
+      "name": "DS_CLICKHOUSE",
+      "label": "clickhouse",
+      "description": "",
+      "type": "datasource",
+      "pluginId": "vertamedia-clickhouse-datasource",
+      "pluginName": "ClickHouse"
+    }
+  ],
+  "__requires": [
+    {
+      "type": "grafana",
+      "id": "grafana",
+      "name": "Grafana",
+      "version": "4.4.3"
+    },
+    {
+      "type": "panel",
+      "id": "graph",
+      "name": "Graph",
+      "version": ""
+    },
+    {
+      "type": "datasource",
+      "id": "vertamedia-clickhouse-datasource",
+      "name": "ClickHouse",
+      "version": "0.0.2"
+    }
+  ],
+  "annotations": {
+    "list": []
+  },
+  "editable": false,
+  "gnetId": null,
+  "graphTooltip": 0,
+  "hideControls": true,
+  "id": null,
+  "links": [],
+  "refresh": "30s",
+  "rows": [
+    {
+      "collapse": false,
+      "height": 496,
+      "panels": [
+        {
+          "aliasColors": {},
+          "bars": false,
+          "dashLength": 10,
+          "dashes": false,
+          "datasource": "${DS_CLICKHOUSE}",
+          "fill": 1,
+          "id": 1,
+          "legend": {
+            "alignAsTable": true,
+            "avg": false,
+            "current": true,
+            "max": true,
+            "min": true,
+            "show": true,
+            "sort": "current",
+            "sortDesc": true,
+            "total": false,
+            "values": true
+          },
+          "lines": true,
+          "linewidth": 1,
+          "links": [],
+          "nullPointMode": "null",
+          "percentage": false,
+          "pointradius": 5,
+          "points": false,
+          "renderer": "flot",
+          "seriesOverrides": [],
+          "spaceLength": 10,
+          "span": 12,
+          "stack": false,
+          "steppedLine": false,
+          "targets": [
+            {
+              "database": "fastnetmon",
+              "dateColDataType": "metricDate",
+              "dateLoading": false,
+              "dateTimeColDataType": "metricDateTime",
+              "datetimeLoading": false,
+              "dsType": "influxdb",
+              "formattedQuery": "<font color=\"darkcyan\">$columns</font>(<br />    host c,<br />    <font color=\"navajowhite\">sum</font>(bits_incoming) <font color=\"navajowhite\">length</font>)<br /><font color=\"darkorange\">FROM</font> <font color=\"darkcyan\">$table</font><br /><font color=\"darkorange\">WHERE</font> host <font color=\"darkorange\">in</font> (<br />    <font color=\"darkorange\">SELECT</font> host<br />    <font color=\"darkorange\">FROM</font><br />(<br />        <font color=\"darkorange\">SELECT</font><br />            host,<br />            <font color=\"navajowhite\">sum</font>(bits_incoming) <font color=\"darkorange\">as</font> <font color=\"navajowhite\">length</font><br />        <font color=\"darkorange\">FROM</font> <font color=\"darkcyan\">$table</font><br />        <font color=\"darkorange\">GROUP BY</font> host<br />        <font color=\"darkorange\">ORDER BY</font> <font color=\"navajowhite\">length</font> <font color=\"darkorange\">DESC</font><br />        <font color=\"darkorange\">LIMIT</font> <font color=\"cornflowerblue\">10</font><br />))",
+              "groupBy": [
+                {
+                  "params": [
+                    "$__interval"
+                  ],
+                  "type": "time"
+                },
+                {
+                  "params": [
+                    "null"
+                  ],
+                  "type": "fill"
+                }
+              ],
+              "interval": "1s",
+              "intervalFactor": 1,
+              "orderByTime": "ASC",
+              "policy": "default",
+              "query": "$columns(\n    host c,\n    sum(bits_incoming) length)\nFROM $table\nWHERE host in (\n    SELECT host\n    FROM\n(\n        SELECT\n            host,\n            sum(bits_incoming) as length\n        FROM $table\n        GROUP BY host\n        ORDER BY length DESC\n        LIMIT 10\n))",
+              "rawQuery": "SELECT t, groupArray((c, length)) as groupArr FROM ( SELECT (intDiv(toUInt32(metricDateTime), 1) * 1) * 1000 as t, host c, sum(bits_incoming) length FROM fastnetmon.host_metrics WHERE metricDate >= toDate(1507809829) AND metricDateTime >= toDateTime(1507809829) AND  host in (     SELECT host     FROM (         SELECT             host,             sum(bits_incoming) as length         FROM fastnetmon.host_metrics         GROUP BY host         ORDER BY length DESC         LIMIT 10 )) GROUP BY t, c  ORDER BY t) GROUP BY t ORDER BY t",
+              "refId": "A",
+              "resultFormat": "time_series",
+              "round": "0s",
+              "select": [
+                [
+                  {
+                    "params": [
+                      "value"
+                    ],
+                    "type": "field"
+                  },
+                  {
+                    "params": [],
+                    "type": "mean"
+                  }
+                ]
+              ],
+              "table": "host_metrics",
+              "tableLoading": false,
+              "tags": []
+            }
+          ],
+          "thresholds": [],
+          "timeFrom": null,
+          "timeShift": null,
+          "title": "MBPS IN",
+          "tooltip": {
+            "shared": false,
+            "sort": 0,
+            "value_type": "individual"
+          },
+          "transparent": true,
+          "type": "graph",
+          "xaxis": {
+            "buckets": null,
+            "mode": "time",
+            "name": null,
+            "show": true,
+            "values": []
+          },
+          "yaxes": [
+            {
+              "format": "bps",
+              "label": null,
+              "logBase": 1,
+              "max": null,
+              "min": null,
+              "show": true
+            },
+            {
+              "format": "short",
+              "label": null,
+              "logBase": 1,
+              "max": null,
+              "min": null,
+              "show": false
+            }
+          ]
+        },
+        {
+          "aliasColors": {},
+          "bars": false,
+          "dashLength": 10,
+          "dashes": false,
+          "datasource": "${DS_CLICKHOUSE}",
+          "fill": 1,
+          "id": 2,
+          "legend": {
+            "alignAsTable": true,
+            "avg": false,
+            "current": true,
+            "max": true,
+            "min": true,
+            "show": true,
+            "sort": "current",
+            "sortDesc": true,
+            "total": false,
+            "values": true
+          },
+          "lines": true,
+          "linewidth": 1,
+          "links": [],
+          "nullPointMode": "null",
+          "percentage": false,
+          "pointradius": 5,
+          "points": false,
+          "renderer": "flot",
+          "seriesOverrides": [],
+          "spaceLength": 10,
+          "span": 12,
+          "stack": false,
+          "steppedLine": false,
+          "targets": [
+            {
+              "database": "fastnetmon",
+              "dateColDataType": "metricDate",
+              "dateLoading": false,
+              "dateTimeColDataType": "metricDateTime",
+              "datetimeLoading": false,
+              "dsType": "influxdb",
+              "formattedQuery": "<font color=\"darkcyan\">$columns</font>(<br />    host c,<br />    <font color=\"navajowhite\">sum</font>(packets_incoming) <font color=\"navajowhite\">length</font>)<br /><font color=\"darkorange\">FROM</font> <font color=\"darkcyan\">$table</font><br /><font color=\"darkorange\">WHERE</font> host <font color=\"darkorange\">in</font> (<br />    <font color=\"darkorange\">SELECT</font> host<br />    <font color=\"darkorange\">FROM</font><br />(<br />        <font color=\"darkorange\">SELECT</font><br />            host,<br />            <font color=\"navajowhite\">sum</font>(packets_incoming) <font color=\"darkorange\">as</font> <font color=\"navajowhite\">length</font><br />        <font color=\"darkorange\">FROM</font> <font color=\"darkcyan\">$table</font><br />        <font color=\"darkorange\">GROUP BY</font> host<br />        <font color=\"darkorange\">ORDER BY</font> <font color=\"navajowhite\">length</font> <font color=\"darkorange\">DESC</font><br />        <font color=\"darkorange\">LIMIT</font> <font color=\"cornflowerblue\">10</font><br />))",
+              "groupBy": [
+                {
+                  "params": [
+                    "$__interval"
+                  ],
+                  "type": "time"
+                },
+                {
+                  "params": [
+                    "null"
+                  ],
+                  "type": "fill"
+                }
+              ],
+              "interval": "1s",
+              "intervalFactor": 1,
+              "orderByTime": "ASC",
+              "policy": "default",
+              "query": "$columns(\n    host c,\n    sum(packets_incoming) length)\nFROM $table\nWHERE host in (\n    SELECT host\n    FROM\n(\n        SELECT\n            host,\n            sum(packets_incoming) as length\n        FROM $table\n        GROUP BY host\n        ORDER BY length DESC\n        LIMIT 10\n))",
+              "rawQuery": "SELECT t, groupArray((c, length)) as groupArr FROM ( SELECT (intDiv(toUInt32(metricDateTime), 1) * 1) * 1000 as t, host c, sum(packets_incoming) length FROM fastnetmon.host_metrics WHERE metricDate >= toDate(1507809829) AND metricDateTime >= toDateTime(1507809829) AND  host in (     SELECT host     FROM (         SELECT             host,             sum(packets_incoming) as length         FROM fastnetmon.host_metrics         GROUP BY host         ORDER BY length DESC         LIMIT 10 )) GROUP BY t, c  ORDER BY t) GROUP BY t ORDER BY t",
+              "refId": "A",
+              "resultFormat": "time_series",
+              "round": "0s",
+              "select": [
+                [
+                  {
+                    "params": [
+                      "value"
+                    ],
+                    "type": "field"
+                  },
+                  {
+                    "params": [],
+                    "type": "mean"
+                  }
+                ]
+              ],
+              "table": "host_metrics",
+              "tableLoading": false,
+              "tags": []
+            }
+          ],
+          "thresholds": [],
+          "timeFrom": null,
+          "timeShift": null,
+          "title": "PPS IN",
+          "tooltip": {
+            "shared": false,
+            "sort": 0,
+            "value_type": "individual"
+          },
+          "transparent": true,
+          "type": "graph",
+          "xaxis": {
+            "buckets": null,
+            "mode": "time",
+            "name": null,
+            "show": true,
+            "values": []
+          },
+          "yaxes": [
+            {
+              "format": "pps",
+              "label": null,
+              "logBase": 1,
+              "max": null,
+              "min": null,
+              "show": true
+            },
+            {
+              "format": "short",
+              "label": null,
+              "logBase": 1,
+              "max": null,
+              "min": null,
+              "show": false
+            }
+          ]
+        }
+      ],
+      "repeat": null,
+      "repeatIteration": null,
+      "repeatRowId": null,
+      "showTitle": false,
+      "title": "Dashboard Row",
+      "titleSize": "h6"
+    }
+  ],
+  "schemaVersion": 14,
+  "style": "dark",
+  "tags": [],
+  "templating": {
+    "list": []
+  },
+  "time": {
+    "from": "now-1h",
+    "to": "now"
+  },
+  "timepicker": {
+    "refresh_intervals": [
+      "5s",
+      "10s",
+      "30s",
+      "1m",
+      "5m",
+      "15m",
+      "30m",
+      "1h",
+      "2h",
+      "1d"
+    ],
+    "time_options": [
+      "5m",
+      "15m",
+      "1h",
+      "6h",
+      "12h",
+      "24h",
+      "2d",
+      "7d",
+      "30d"
+    ]
+  },
+  "timezone": "",
+  "title": "TOP 10 HOSTS",
+  "version": 4
+}
