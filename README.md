@@ -53,6 +53,10 @@ https://grafana.com/dashboards/2243
 
 After all you may want collect your entyre sFlow/Netflow data directly to ClickHouse or InfluxDB
 
+
+![alt text](https://github.com/openbsod/grafana_dashboards/blob/master/images/photo_2017-12-18_12-56-26.jpg)
+
+
 ![alt text](https://github.com/openbsod/grafana_dashboards/blob/master/images/influx.png)
 
 
