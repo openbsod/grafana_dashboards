@@ -98,7 +98,7 @@
               ],
               "intervalFactor": 1,
               "policy": "default",
-              "query": "SELECT mean(\"value\") FROM \"networks\" WHERE \"direction\" = 'incoming' AND \"resource\" = 'bps' AND value > 550000000AND $timeFilter GROUP BY time($__interval), cidr fill(previous)",
+              "query": "SELECT mean(\"value\") FROM \"networks\" WHERE \"direction\" = 'incoming' AND \"resource\" = 'bps' AND value > 550000000 AND $timeFilter GROUP BY time($__interval), cidr fill(previous)",
               "rawQuery": true,
               "refId": "A",
               "resultFormat": "time_series",
